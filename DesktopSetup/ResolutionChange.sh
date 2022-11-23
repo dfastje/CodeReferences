@@ -1,0 +1,1 @@
+#https://vitux.com/how-to-change-screen-resolution-through-the-ubuntu-terminal/
