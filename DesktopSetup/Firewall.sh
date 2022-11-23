@@ -35,8 +35,10 @@ sudo ufw allow from $LOCAL_IP_RANGE to any port 32400
 #sudo ufw allow from $LOCAL_IP_RANGE to any port 32413
 #sudo ufw allow from $LOCAL_IP_RANGE to any port 32414
 #sudo ufw allow from $LOCAL_IP_RANGE to any port 32469
-
-
+##NAS drive from local network ---------------------------------------------------------------------------------------------------------------------
+#https://www.upguard.com/blog/smb-port
+sudo ufw allow from $LOCAL_IP_RANGE to any port 445
+sudo ufw allow from $LOCAL_IP_RANGE to any port 139
 ##Removing lines ----------------------------------------------------------------------------------------------------------------------
 #sudo ufw status numbered
 #sudo ufw delete 1
