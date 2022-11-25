@@ -1,13 +1,22 @@
 ######## Install ##################################################################
 
+# https://nextcloud.com/install/ -> Snap package
 # https://snapcraft.io/install/nextcloud/ubuntu
+#sudo apt list --installed | grep nextcloud
 sudo snap install nextcloud
 
 ######## Setup ##################################################################
+#Access http://localhost:80
+#input initial admin creds
+
+
+######## Configs ##################################################################
 # https://github.com/nextcloud-snap/nextcloud-snap
 
 
+
 # Removeable media------------------------------------
+# https://github.com/nextcloud-snap/nextcloud-snap/wiki/Change-data-directory-to-use-another-disk-partition
 sudo snap connect nextcloud:removable-media
 
 
@@ -19,6 +28,8 @@ sudo snap connect nextcloud:removable-media
 # HTTP & HTTPS ----------------------------------------
 ##Self signed cert SSL
 sudo nextcloud.enable-https self-signed
+sudo snap set nextcloud ports.http=81
+sudo snap set nextcloud ports.https=444
 ##Valid cert SSL
 # sudo nextcloud.enable-https lets-encrypt
 
