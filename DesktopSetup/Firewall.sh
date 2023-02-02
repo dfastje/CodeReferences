@@ -40,9 +40,19 @@ sudo ufw allow from $LOCAL_IP_RANGE to any port 32400
 sudo ufw allow from $LOCAL_IP_RANGE to any port 445
 sudo ufw allow from $LOCAL_IP_RANGE to any port 139
 ##Nextcloud from local network ---------------------------------------------------------------------------------------------------------------------
-#https://www.upguard.com/blog/smb-port
-sudo ufw allow from $LOCAL_IP_RANGE to any port 444
-sudo ufw allow from $LOCAL_IP_RANGE to any port 81
+#
+#sudo ufw allow from $LOCAL_IP_RANGE to any port 444
+#sudo ufw allow from $LOCAL_IP_RANGE to any port 81
+##Nextcloud from local network ---------------------------------------------------------------------------------------------------------------------
+#https://jellyfin.org/docs/general/networking/
+#sudo ufw allow from $LOCAL_IP_RANGE to any port 8096
+#sudo ufw allow from $LOCAL_IP_RANGE to any port 8920
+#sudo ufw allow from $LOCAL_IP_RANGE to any port 1900
+#sudo ufw allow from $LOCAL_IP_RANGE to any port 7359
+##Syncthing from local network ---------------------------------------------------------------------------------------------------------------------
+#https://jellyfin.org/docs/general/networking/
+sudo ufw allow from $LOCAL_IP_RANGE to any port 22000
+sudo ufw allow from $LOCAL_IP_RANGE to any port 21027
 ##Removing lines ----------------------------------------------------------------------------------------------------------------------
 #sudo ufw status numbered
 #sudo ufw delete 1
