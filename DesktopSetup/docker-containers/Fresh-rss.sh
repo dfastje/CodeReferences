@@ -1,5 +1,5 @@
 sudo docker run -d --restart unless-stopped --log-opt max-size=10m \
-  -p 8091:80 \
+  -p 8080:80 \
   -e TZ=America/New_York \
   -e 'CRON_MIN=1,31' \
   -v freshrss_data:/var/www/FreshRSS/data \
