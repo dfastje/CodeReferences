@@ -1,3 +1,6 @@
+
+#From FreshRSS directly. Might use in the future, so not removing
+#https://github.com/FreshRSS/FreshRSS/blob/edge/Docker/README.md
 #sudo docker run -d --restart unless-stopped --log-opt max-size=10m \
 #  -p 8020:80 \
 #  -e TZ=America/New_York \
