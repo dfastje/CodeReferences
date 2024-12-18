@@ -7,7 +7,7 @@ services:
       - PGID=1000
       - TZ=America/New_York
     volumes:
-      - freshrss_config:/config
+      - /freshrss_config:/config
     ports:
       - 8020:80
     restart: unless-stopped
