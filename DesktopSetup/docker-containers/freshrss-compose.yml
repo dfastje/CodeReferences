@@ -1,4 +1,5 @@
 #https://hub.docker.com/r/linuxserver/freshrss
+# https://github.com/linuxserver/docker-freshrss/blob/master/Dockerfile
 services:
   freshrss:
     image: linuxserver/freshrss:latest
