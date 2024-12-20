@@ -1,1 +1,0 @@
-docker compose -f openssh-compose.yml up -d
