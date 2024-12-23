@@ -11,4 +11,4 @@
 #  freshrss/freshrss
 
 
-docker compose -f freshrss-compose.yml up -d
+docker compose up -d
