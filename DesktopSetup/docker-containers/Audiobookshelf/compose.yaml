@@ -1,0 +1,17 @@
+#Audiobookshelf
+# https://www.audiobookshelf.org/docs/#docker-compose-install
+# https://hub.docker.com/r/advplyr/audiobookshelf
+
+
+services:
+  audiobookshelf:
+    image: advplyr/audiobookshelf:latest
+    ports:
+      - 8011:80
+    volumes:
+      - </path/to/audiobooks>:/audiobooks
+#      - </path/to/podcasts>:/podcasts
+      - </path/to/config>:/config
+      - </path/to/metadata>:/metadata
+    environment:
+      - TZ=America/New_York
