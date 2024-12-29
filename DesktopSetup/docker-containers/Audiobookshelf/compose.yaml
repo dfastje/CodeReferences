@@ -9,9 +9,10 @@ services:
     ports:
       - 8011:80
     volumes:
-      - </path/to/audiobooks>:/audiobooks
+      - /home/eyeball/Documents/audiobooks:/audiobooks
+#      - </path/to/audiobooks>:/audiobooks
 #      - </path/to/podcasts>:/podcasts
-      - </path/to/config>:/config
-      - </path/to/metadata>:/metadata
+      - /docker/audiobookshelf_config:/config
+      - /docker/audiobookshelf_metadata:/metadata
     environment:
       - TZ=America/New_York
