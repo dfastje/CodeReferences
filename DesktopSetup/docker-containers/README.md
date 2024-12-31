@@ -34,3 +34,8 @@ Research how I want to manage container updates - probably will base this in Jen
 ## Syncthing
 
 ### Status: Stable. Not using container anymore for this
+
+<!------------------------------------------------------------------------------->
+## Nextcloud
+
+### Status: Paused - checking for alternative spreadsheet solution
