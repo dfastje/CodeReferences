@@ -4,7 +4,7 @@
 
 
 #For Linux and without a web server or reverse proxy (like Apache, Nginx, Caddy, Cloudflare Tunnel and else) already in place:
-sudo docker run \
+sudo docker run -d \
 --init \
 --sig-proxy=false \
 --name nextcloud-aio-mastercontainer \

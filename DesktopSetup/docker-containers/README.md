@@ -2,7 +2,11 @@
 
 ## Audiobookshelf
 
-### Status: Waiting on syncthing config
+### Status: Kinda Stable - uncomfortable with current auth 
+
+### Future updates:
+https://www.audiobookshelf.org/guides/oidc_authentication/
+
 
 <!------------------------------------------------------------------------------->
 ## CloudflareTunnel
@@ -29,4 +33,4 @@ Research how I want to manage container updates - probably will base this in Jen
 <!------------------------------------------------------------------------------->
 ## Syncthing
 
-### Status: Working
+### Status: Stable. Not using container anymore for this
