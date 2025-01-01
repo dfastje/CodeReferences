@@ -2,6 +2,7 @@
 # https://nextcloud.com/install/#aio
 # https://github.com/nextcloud/all-in-one#how-to-use-this
 
+# I don't really need any of the
 
 #For Linux and without a web server or reverse proxy (like Apache, Nginx, Caddy, Cloudflare Tunnel and else) already in place:
 sudo docker run -d \
