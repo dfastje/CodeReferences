@@ -9,10 +9,10 @@ services:
     ports:
       - 8011:80
     volumes:
-      - /home/eyeball/Documents/audiobooks:/audiobooks
+      - /media/sf_audiobooks:/audiobooks
 #      - </path/to/audiobooks>:/audiobooks
 #      - </path/to/podcasts>:/podcasts
-      - /docker/audiobookshelf_config:/config
-      - /docker/audiobookshelf_metadata:/metadata
+      - /home/hostadmin/Syncthing/docker/audiobookshelf_config:/config
+      - /home/hostadmin/Syncthing/docker/audiobookshelf_metadata:/metadata
     environment:
       - TZ=America/New_York

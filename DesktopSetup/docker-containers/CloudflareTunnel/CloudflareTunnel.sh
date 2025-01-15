@@ -6,4 +6,6 @@
 #Couldn't get macvlan to work due to limitations in ubiquiti's unifi
 # (I would need to add a second nic to the computer ... probably will in the future)
 
+#export TUNNEL_TOKEN=
+
 sudo -E docker compose up -d
