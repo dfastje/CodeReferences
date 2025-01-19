@@ -1,41 +1,48 @@
 # Docker Containers
+## Working:
 
-## Audiobookshelf
+### Audiobookshelf
 
-### Status: Kinda Stable - uncomfortable with current auth 
+#### Status: Kinda Stable - uncomfortable with current auth 
 
-### Future updates:
+#### Future updates:
 https://www.audiobookshelf.org/guides/oidc_authentication/
 
 
-<!------------------------------------------------------------------------------->
-## CloudflareTunnel
+<!-------------------------->
+### CloudflareTunnel
 
-### Status: Stable
+#### Status: Stable
 
-### Future updates: 
+#### Future updates: 
 I would like to do some additional network isolation once I do 
     some research into linux NIC management for multiple VLANs
 
-<!------------------------------------------------------------------------------->
-## FreshRSS
+<!-------------------------->
+### FreshRSS
 
-### Status: Stable
+#### Status: Stable
 
-### Future updates: 
+#### Future updates: 
 Research how I want to manage container updates - probably will base this in Jenkins.
 
-<!------------------------------------------------------------------------------->
-## Portainer
+<!-------------------------->
+### Portainer
 
-### Status: Stable
+#### Status: Stable
 
-<!------------------------------------------------------------------------------->
-## Syncthing
+<!------------------------------------------------------------------------>
+## Developing:
 
-### Status: Stable. Not using container anymore for this
+### Syncthing
 
-<!------------------------------------------------------------------------------->
-## Nextcloud
+#### Status: Stable. Not using container anymore for this
 
-### Status: Paused - checking for alternative spreadsheet solution
+<!-------------------------->
+### Nextcloud
+
+#### Status: Paused - checking for alternative spreadsheet solution
+
+<!-------------------------->
+### Authentik
+#### Status: not started
