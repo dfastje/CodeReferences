@@ -34,9 +34,9 @@ Research how I want to manage container updates - probably will base this in Jen
 <!------------------------------------------------------------------------>
 ## Developing:
 
-### Syncthing
+### Jenkins
 
-#### Status: Stable. Not using container anymore for this
+#### Status: starting
 
 <!-------------------------->
 ### Nextcloud
