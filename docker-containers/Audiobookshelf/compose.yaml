@@ -10,7 +10,7 @@ services:
       - 8011:80
     restart: unless-stopped
     volumes:
-      - /media/sf_audiobooks:/audiobooks
+      - /home/hostadmin/Syncthing/audiobooks:/audiobooks
 #      - </path/to/audiobooks>:/audiobooks
 #      - </path/to/podcasts>:/podcasts
       - /home/hostadmin/Syncthing/docker/audiobookshelf_config:/config
