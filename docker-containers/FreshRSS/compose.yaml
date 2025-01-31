@@ -9,7 +9,7 @@ services:
       - PGID=1000
       - TZ=America/New_York
     volumes:
-      - /home/hostadmin/Syncthing/docker/freshrss_config:/config
+      - /home/ubuntuprod/Syncthing/docker/freshrss_config:/config
     ports:
       - 8020:80
     restart: unless-stopped

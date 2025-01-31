@@ -10,10 +10,10 @@ services:
       - 8011:80
     restart: unless-stopped
     volumes:
-      - /home/hostadmin/Syncthing/audiobooks:/audiobooks
+      - /media/ubuntuprod/HDD/audiobooks:/audiobooks
 #      - </path/to/audiobooks>:/audiobooks
 #      - </path/to/podcasts>:/podcasts
-      - /home/hostadmin/Syncthing/docker/audiobookshelf_config:/config
-      - /home/hostadmin/Syncthing/docker/audiobookshelf_metadata:/metadata
+      - /home/ubuntuprod/Syncthing/docker/audiobookshelf_config:/config
+      - /home/ubuntuprod/Syncthing/docker/audiobookshelf_metadata:/metadata
     environment:
       - TZ=America/New_York
