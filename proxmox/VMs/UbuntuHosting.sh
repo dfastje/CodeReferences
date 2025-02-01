@@ -24,14 +24,15 @@ sudo apt install openssh-server
 
 #----------------------------------------------------------------------------------------------------------------------
 #Mounting SMB network drive
+#TODO: figure out access bug between Ubuntu VM and TrueNAS network drive
 #https://ubuntu.com/server/docs/how-to-mount-cifs-shares-permanently
 
-sudo apt-get install cifs-utils
-vi ~/.smbcredentials
-#Contents for smb creds file
-#username=<username>
-#
-#password=<password>
-chmod 600 ~/.smbcredentials
+#sudo apt-get install cifs-utils
+#vi ~/.smbcredentials
+##Contents for smb creds file
+##  username=<username>
+##
+##  password=<password>
+#chmod 600 ~/.smbcredentials
 #----------------------------------------------------------------------------------------------------------------------
 #TODO: add UFW
