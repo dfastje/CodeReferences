@@ -9,3 +9,4 @@
 #export TUNNEL_TOKEN=
 
 sudo -E docker compose up -d
+#sudo docker compose down
