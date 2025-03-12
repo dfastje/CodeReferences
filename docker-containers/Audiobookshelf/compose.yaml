@@ -10,7 +10,7 @@ services:
       - 8011:80
     restart: unless-stopped
     volumes:
-      - /media/ubuntuprod/HDD1/audiobooks:/audiobooks
+      - /media/ubuntuprod/HDD2/audiobooks:/audiobooks
 #      - </path/to/audiobooks>:/audiobooks
 #      - </path/to/podcasts>:/podcasts
       - /home/ubuntuprod/Syncthing/docker/audiobookshelf_config:/config
