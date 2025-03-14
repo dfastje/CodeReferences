@@ -6,7 +6,13 @@
 #Couldn't get macvlan to work due to limitations in ubiquiti's unifi
 # (I would need to add a second nic to the computer ... probably will in the future)
 
-#export TUNNEL_TOKEN=
 
-sudo -E docker compose up -d
-#sudo docker compose down
+sudo docker compose down
+sudo docker compose pull
+sudo docker compose up -d
+
+
+#Errors:
+#  If you see:
+#    WARN[0000] The "TUNNEL_TOKEN" variable is not set. Defaulting to a blank string.
+#  You are missing the docker compose .env file
