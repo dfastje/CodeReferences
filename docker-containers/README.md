@@ -6,8 +6,8 @@
 #### Status: Kinda Stable - uncomfortable with current auth 
 
 #### Future updates:
-https://www.audiobookshelf.org/guides/oidc_authentication/
-
+- https://www.audiobookshelf.org/guides/oidc_authentication/
+- Need to update local folder mapping in compose script to take param input
 
 <!-------------------------->
 ### CloudflareTunnel
@@ -15,7 +15,7 @@ https://www.audiobookshelf.org/guides/oidc_authentication/
 #### Status: Stable
 
 #### Future updates: 
-I would like to do some additional network isolation once I do 
+- I would like to do some additional network isolation once I do 
     some research into linux NIC management for multiple VLANs
 
 <!-------------------------->
@@ -46,3 +46,7 @@ Research how I want to manage container updates - probably will base this in Jen
 <!-------------------------->
 ### Authentik
 #### Status: not started
+
+<!-------------------------->
+### OpenWebUI
+#### Status: Developing
