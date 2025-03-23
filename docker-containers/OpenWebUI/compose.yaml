@@ -1,15 +1,10 @@
+version: '3'
 services:
-  open-webui:
-    ports:
-      - 3000:8080
-    environment:
-      - OLLAMA_BASE_URL=https://example.com
-    volumes:
-      - open-webui:/app/backend/data
-    container_name: open-webui
-    restart: always
+  openwebui:
     image: ghcr.io/open-webui/open-webui:main
+    ports:
+      - "3000:8080"
+    volumes:
+      - /home/ubuntuprod/Syncthing/docker/openwebui_data:/app/backend/data
 volumes:
   open-webui:
-    external: true
-    name: open-webui
