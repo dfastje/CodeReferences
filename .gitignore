@@ -1,2 +1,4 @@
 .idea/
 /docker-containers/CloudflareTunnel/.env
+/docker-containers/Audiobookshelf/.env
+/docker-containers/Syncthing/.env
