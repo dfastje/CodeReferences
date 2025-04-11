@@ -31,12 +31,18 @@ Research how I want to manage container updates - probably will base this in Jen
 
 #### Status: Stable
 
+<!-------------------------->
+### OpenWebUI
+
+#### Status: Stable
+
 <!------------------------------------------------------------------------>
 ## Developing:
+<!------------------------------------------------------------------------>
 
 ### Syncthing
 
-#### Status: Stable. Not using container anymore for this
+#### Status: Developing
 
 <!-------------------------->
 ### Nextcloud
@@ -45,8 +51,7 @@ Research how I want to manage container updates - probably will base this in Jen
 
 <!-------------------------->
 ### Authentik
+
 #### Status: not started
 
 <!-------------------------->
-### OpenWebUI
-#### Status: Developing
