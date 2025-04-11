@@ -3,11 +3,11 @@ services:
   syncthing:
     image: lscr.io/linuxserver/syncthing:latest
     container_name: syncthing
-    hostname: syncthing #optional
+    hostname: syncadmin #optional
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=America/New_York
     volumes:
       - /home/ubuntuprod/Syncthing/docker/syncthing_config:/config
       - ${SYNCTHING:-/default/data/syncthing}:/syncthing
