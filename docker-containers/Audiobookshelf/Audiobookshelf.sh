@@ -5,5 +5,4 @@
 sudo docker compose down
 sudo docker compose pull
 
-ST_DATA1_PATH=/media/ubuntuprod/HDD3/syncthing \
 sudo docker compose up -d
