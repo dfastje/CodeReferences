@@ -42,7 +42,11 @@ Research how I want to manage container updates - probably will base this in Jen
 
 ### Syncthing
 
-#### Status: Developing
+#### Status: Stable
+
+#### Future updates:
+Need to check back in on first party docker container - not currently recognized as first party on dockerhub?
+https://hub.docker.com/r/syncthing/syncthing
 
 <!-------------------------->
 ### Nextcloud

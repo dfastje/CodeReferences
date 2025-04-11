@@ -10,3 +10,9 @@
 sudo docker compose down
 sudo docker compose pull
 sudo docker compose up -d
+
+#INITIAL DEPLOYMENT STEPS:
+# CHANGE GUI Listen Address from 0.0.0.0 to 127.0.0.1
+# Add creds
+# Add HTTPS required
+# Disable "Global Discovery" & "Enable Relaying"
