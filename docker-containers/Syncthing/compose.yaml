@@ -10,9 +10,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - /home/ubuntuprod/Syncthing/docker/syncthing_config:/config
-      - ${ENV_DATA1_PATH:-/default/data/syncthing_media}:/syncthing_media
-      - ${ENV_DATA2_PATH:-/default/data2/docker_configs}:/docker
-      - ${ENV_DATA3_PATH:-/default/data3/syncthing_other}:/syncthing_other
+      - ${SYNCTHING:-/default/data/syncthing}:/syncthing
+      - ${SYNCTHING_LOCAL:-/default/data2/syncthing_local}:/syncthing_local
 
     ports:
       - 8384:8384
