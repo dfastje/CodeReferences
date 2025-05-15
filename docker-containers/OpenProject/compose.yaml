@@ -1,0 +1,13 @@
+services:
+  openproject:
+    image: openproject/openproject:15
+    container_name: openproject
+    ports:
+      - "8090:80"
+    environment:
+      - OPENPROJECT_SECRET_KEY_BASE=${OPENPROJECT_SECRET}
+      - OPENPROJECT_HOST__NAME=openproject.dfastje.com
+    volumes:
+      - /home/ubuntuprod/Syncthing/docker/openproject/pgdata:/var/openproject/pgdata
+      - /home/ubuntuprod/Syncthing/docker/openproject/assets:/var/openproject/assets
+    restart: unless-stopped
