@@ -25,6 +25,7 @@
 
 #### Future updates: 
 Research how I want to manage container updates - probably will base this in Jenkins.
+- currently just using shell scripts
 
 <!-------------------------->
 ### Portainer
@@ -35,10 +36,7 @@ Research how I want to manage container updates - probably will base this in Jen
 ### OpenWebUI
 
 #### Status: Stable
-
-<!------------------------------------------------------------------------>
-## Developing:
-<!------------------------------------------------------------------------>
+<!-------------------------->
 
 ### Syncthing
 
@@ -48,14 +46,30 @@ Research how I want to manage container updates - probably will base this in Jen
 Need to check back in on first party docker container - not currently recognized as first party on dockerhub?
 https://hub.docker.com/r/syncthing/syncthing
 
-<!-------------------------->
-### Nextcloud
 
-#### Status: Paused - checking for alternative spreadsheet solution
+<!------------------------------------------------------------------------>
+## Developing:
+<!------------------------------------------------------------------------>
 
 <!-------------------------->
 ### Authentik
 
-#### Status: not started
+#### Status: Implemented
+
+#### Future updates:
+- Configure with other services for SSO
+- Set up multi-factor authentication
+
+<!-------------------------->
+
+<!-------------------------->
+### Libation
+
+#### Status: Researching
+
+### Notes:
+- dockerhub image: https://hub.docker.com/r/rmcrackan/libation
+- github: https://github.com/rmcrackan/Libation/releases
+- Website: https://getlibation.com/
 
 <!-------------------------->
