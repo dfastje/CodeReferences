@@ -1,5 +1,7 @@
 #SMB setup
-NAS_IP=""
+NAS_IP="192.168.2.171"
+NAS_DIR="/media"
+MNT_DIR="/mnt/${NAS_DIR}"
 
 #-----------------------------------------------------------------------
 #Required packages
@@ -9,9 +11,11 @@ sudo apt install cifs-utils
 #-----------------------------------------------------------------------
 #Directory mount point
 
-if [ ! -d "/mnt/media" ]; then
-  sudo mkdir -p /mnt/media
-  echo "Directory created."
+if [ ! -d "${MNT_DIR}" ]; then
+  sudo mkdir -p "${MNT_DIR}"
+  echo "Directory created: ${MNT_DIR}"
+else
+  echo "Directory already exists: ${MNT_DIR}"
 fi
 
 #-----------------------------------------------------------------------
@@ -32,11 +36,11 @@ if [ ! -f "$CREDS_FILE" ] || [ ! -r "$CREDS_FILE" ]; then
     echo "Error: Cannot access credentials file."
     exit 1
 fi
-
+read -p "When you've finished inputing the creds into ${CREDS_FILE}, press Enter..."
 #-----------------------------------------------------------------------
 #Edit /etc/fstab for mounting
-if grep -q ' /mnt/media ' /etc/fstab; then
+if grep -q " ${MNT_DIR} " /etc/fstab; then
   echo "Mount point already exists in /etc/fstab."
 else
-  echo "//server/share   /mnt/share   cifs   credentials=/etc/smb-credentials,iocharset=utf8,uid=1000,gid=1000,file_mode=0770,dir_mode=0770,nofail  0  0" >> /
+  echo "//${NAS_IP}/${NAS_DIR}   ${MNT_DIR}   cifs   credentials=/etc/smb-credentials,iocharset=utf8,uid=1000,gid=1000,file_mode=0770,dir_mode=0770,nofail  0  0" >> /
 fi
