@@ -1,3 +1,5 @@
+#Not working, but close enough for now
+
 #SMB setup
 NAS_IP="192.168.2.171"
 NAS_DIR="media"
