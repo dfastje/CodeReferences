@@ -29,8 +29,7 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/certs:/etc/nginx/certs
     ports:
-      - "80:80"
-      - "443:443"
+      - "3443:443"
     command: >-
       sh -c "set -e;
         if ! command -v openssl >/dev/null 2>&1; then
