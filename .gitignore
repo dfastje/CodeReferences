@@ -3,3 +3,4 @@
 /docker-containers/Audiobookshelf/.env
 /docker-containers/Syncthing/.env
 /docker-containers/OpenProject/.env
+/docker-containers/CodeServer/.env
