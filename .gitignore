@@ -4,3 +4,5 @@
 /docker-containers/Syncthing/.env
 /docker-containers/OpenProject/.env
 /docker-containers/CodeServer/.env
+/docker-containers/Audiobookshelf/nginx/certs/audiobookshelf.crt
+/docker-containers/Audiobookshelf/nginx/certs/audiobookshelf.key
