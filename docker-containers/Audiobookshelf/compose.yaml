@@ -11,7 +11,7 @@ services:
 #      - "8011:80"
     restart: unless-stopped
     volumes:
-      - ${ENV_DATA1_PATH:-/default/data/audiobooks}:/audiobooks
+      - ${AUDIOBOOK_PATH}:/audiobooks
 #      - </path/to/audiobooks>:/audiobooks
 #      - </path/to/podcasts>:/podcasts
       - ${AUDIOBOOK_CONFIG_PATH}:/config

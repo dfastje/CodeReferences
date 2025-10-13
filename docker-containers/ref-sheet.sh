@@ -4,6 +4,10 @@
 docker ps
 
 #-------------------------------------------------------------------------------
+#execute command in docker
+sudo docker exec container_name ls
+
+#-------------------------------------------------------------------------------
 #Clean up env for dev:
 
 #Remove all existing containers for clean dev
