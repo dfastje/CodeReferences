@@ -15,8 +15,7 @@ services:
       - WEBHOOK_URL=${N8N_WEBHOOK_URL:-https://n8n.local/}
       - GENERIC_TIMEZONE=${N8N_TIMEZONE:-America/New_York}
     volumes:
-      - #    TODO: think about where this should be?
-      - ${N8N_DATA_PATH:-/path/to/n8n/data}:/home/node/.n8n
+      - ${N8N_DATA_PATH:-~/docker/n8n/n8n_data}:/home/node/.n8n
     restart: unless-stopped
   reverse-proxy:
     image: nginx:alpine

@@ -15,8 +15,7 @@ services:
       - DEFAULT_WORKSPACE=/config/workspace #optional
       - PWA_APPNAME=code-server #optional
     volumes:
-#    TODO: think about where this should be?
-      - ${CODE_SERVER_CONFIG_PATH:-./code-server-config}:/config
+      - ${CODE_SERVER_CONFIG_PATH:-~/docker/codeserver/code-server-config}:/config
     restart: unless-stopped
   reverse-proxy:
     image: nginx:alpine
