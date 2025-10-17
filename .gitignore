@@ -8,3 +8,4 @@
 /docker-containers/Audiobookshelf/nginx/certs/audiobookshelf.key
 /docker-containers/FreshRSS/nginx/certs/freshrss.crt
 /docker-containers/FreshRSS/nginx/certs/freshrss.key
+/docker-containers/n8n/.env
