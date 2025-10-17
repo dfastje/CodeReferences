@@ -5,8 +5,8 @@
 # shellcheck disable=SC2046
 sudo docker rm -f $(sudo docker ps -aq)
 #Remove unused images:
-sudo docker image prune -a
+#sudo docker image prune -a
 #Remove unused volumes:
-sudo docker volume prune
+#sudo docker volume prune
 #Remove unused networks:
-sudo docker network prune
+#sudo docker network prune

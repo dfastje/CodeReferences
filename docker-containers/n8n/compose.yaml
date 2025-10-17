@@ -1,42 +1,48 @@
----
 services:
+  postgres:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER:-n8n}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-n8n}"
+      POSTGRES_DB: "${POSTGRES_DB:-n8n}"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-n8n} -d ${POSTGRES_DB:-n8n}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
   n8n:
     image: n8nio/n8n:latest
-    container_name: n8n
-#    ports:
-#      - "5678:5678"
-    environment:
-      - TZ=America/New_York
-      - N8N_BASIC_AUTH_ACTIVE=${N8N_BASIC_AUTH_ACTIVE:-true} #optional
-      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER} #optional
-      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD} #optional
-      - N8N_HOST=${N8N_HOST:-n8n.local} #optional
-      - N8N_PORT=5678
-      - WEBHOOK_URL=${N8N_WEBHOOK_URL:-https://n8n.local/}
-      - GENERIC_TIMEZONE=${N8N_TIMEZONE:-America/New_York}
-    volumes:
-      - ${N8N_DATA_PATH:-~/docker/n8n/n8n_data}:/home/node/.n8n
     restart: unless-stopped
-  reverse-proxy:
-    image: nginx:alpine
-    container_name: n8n-proxy
-    depends_on:
-      - n8n
     environment:
-      - CERT_DOMAIN=${N8N_CERT_DOMAIN:-n8n.local}
-      - CERT_DAYS=${N8N_CERT_DAYS:-365}
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro
-      - ./nginx/certs:/etc/nginx/certs
+      DB_TYPE: postgresdb
+      DB_POSTGRESDB_HOST: postgres
+      DB_POSTGRESDB_PORT: "5432"
+      DB_POSTGRESDB_DATABASE: "${POSTGRES_DB:-n8n}"
+      DB_POSTGRESDB_USER: "${POSTGRES_USER:-n8n}"
+      DB_POSTGRESDB_PASSWORD: "${POSTGRES_PASSWORD:-n8n}"
+      N8N_HOST: "${N8N_HOST:-localhost}"
+      N8N_PORT: "${N8N_PORT:-5678}"
+      N8N_PROTOCOL: "${N8N_PROTOCOL:-http}"
+      N8N_BASIC_AUTH_ACTIVE: "${N8N_BASIC_AUTH_ACTIVE:-true}"
+      N8N_BASIC_AUTH_USER: "${N8N_BASIC_AUTH_USER:-admin}"
+      N8N_BASIC_AUTH_PASSWORD: "${N8N_BASIC_AUTH_PASSWORD:-changeme}"
+      TZ: "${TZ:-UTC}"
+      GENERIC_TIMEZONE: "${GENERIC_TIMEZONE:-UTC}"
     ports:
-      - "8443:443"
-    command: >-
-      sh -c "set -e;
-        if ! command -v openssl >/dev/null 2>&1; then
-          apk add --no-cache openssl >/dev/null 2>&1;
-        fi;
-        if [ ! -f /etc/nginx/certs/n8n.crt ] || [ ! -f /etc/nginx/certs/n8n.key ]; then
-          openssl req -x509 -nodes -batch -days 365 -newkey rsa:2048 -keyout /etc/nginx/certs/n8n.key -out /etc/nginx/certs/n8n.crt -subj \"/CN=localhost\" -addext \"subjectAltName=DNS:localhost\";
-        fi;
-        exec nginx -g 'daemon off;'"
-    restart: unless-stopped
+      - "${N8N_PORT:-5678}:5678"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - n8n_local_files:/files
+
+volumes:
+  postgres_data:
+  n8n_data:
+  n8n_local_files:
