@@ -2,4 +2,4 @@
 
 ## New Docker Container
 Using the /docker-containers/CodeServer directory as a template, 
-create a new docker-containers directory for n8n
+modify the docker-containers directory for n8n to include nginx
