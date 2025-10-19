@@ -21,3 +21,5 @@ sudo apt-get install -y \
 
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
+
+sudo docker run --rm --gpus all nvidia/cuda:12.2.0-base-ubuntu22.04 nvidia-smi
