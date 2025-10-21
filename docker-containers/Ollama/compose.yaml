@@ -16,6 +16,7 @@ services:
     container_name: ollama-proxy
     depends_on:
       - ollama
+      - openwebui
     environment:
       - CERT_DOMAIN=${OLLAMA_CERT_DOMAIN:-ollama.local}
       - CERT_DAYS=${OLLAMA_CERT_DAYS:-365}
@@ -23,7 +24,8 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ./nginx/certs:/etc/nginx/certs
     ports:
-      - "${OLLAMA_HTTPS_PORT:-11443}:443"
+      - "${OPENWEBUI_HTTPS_PORT:-30443}:443"
+      - "${OLLAMA_HTTPS_PORT:-11444}:444"
     command: >-
       sh -c "set -e;
         if ! command -v openssl >/dev/null 2>&1; then
@@ -35,5 +37,19 @@ services:
         exec nginx -g 'daemon off;'"
     restart: unless-stopped
 
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: openwebui
+    ports:
+      - "3000:8080"
+    depends_on:
+      - ollama
+    environment:
+      OLLAMA_BASE_URL: "http://ollama:11434"
+    volumes:
+      - openwebui_data:/app/backend/data
+    restart: unless-stopped
+
 volumes:
   ollama_data:
+  openwebui_data:
