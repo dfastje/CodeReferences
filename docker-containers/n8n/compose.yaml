@@ -18,6 +18,8 @@ services:
   n8n:
     image: n8nio/n8n:latest
     restart: unless-stopped
+    ports:
+      - "5679:5678"
     environment:
       DB_TYPE: postgresdb
       DB_POSTGRESDB_HOST: postgres
