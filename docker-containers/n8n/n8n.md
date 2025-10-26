@@ -44,6 +44,20 @@ sudo docker logs -f n8n-app
 sudo docker logs -f n8n-proxy
 ```
 
+## Volume Maintenance
+
+```bash
+sudo docker volume rm n8n_postgres_data
+```
+
+```bash
+sudo docker volume rm n8n_n8n_data
+```
+
+```bash
+sudo docker volume rm n8n_n8n_local_files
+```
+
 ## Documentation
 
 - [n8n Docker Image](https://hub.docker.com/r/n8nio/n8n)
