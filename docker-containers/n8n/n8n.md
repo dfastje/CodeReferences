@@ -30,6 +30,20 @@ sudo docker compose pull && \
 sudo docker compose up -d
 ```
 
+## Debug Commands
+
+```bash
+sudo docker logs -f n8n-postgres
+```
+
+```bash
+sudo docker logs -f n8n-app
+```
+
+```bash
+sudo docker logs -f n8n-proxy
+```
+
 ## Documentation
 
 - [n8n Docker Image](https://hub.docker.com/r/n8nio/n8n)
