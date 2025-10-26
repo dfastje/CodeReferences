@@ -12,3 +12,4 @@
 *.key
 *.crt
 *.pem
+/docker-containers/Audiobookshelf/docker-volumes/
