@@ -4,17 +4,15 @@ Document setup details, environment variables, and operational tips here.
 
 ## Environment Variables
 
-| Variable                   | Dev Value                     | Prod Value          |
-| :------------------------- | :---------------------------- | :------------------ |
-| `CODE_SERVER_CONFIG_PATH`  | `./docker-volumes/config`     | -                   |
-| `CODE_SERVER_PASSWORD`     | `changeme`                    | -                   |
-| `CODE_SERVER_SUDO_PASSWORD`| `changeme`                    | -                   |
-| `CODE_SERVER_CERT_DIR`     | `./nginx/ssl/cert`            | `/etc/ssl/certs`    |
-| `CODE_SERVER_KEY_DIR`      | `./nginx/ssl/private`         | `/etc/ssl/private`  |
-| `CODE_SERVER_CERT_DOMAIN`  | `code-server.local`           | -                   |
-| `CODE_SERVER_CERT_DAYS`    | `365`                         | -                   |
-
-> Production override: set `CODE_SERVER_CERT_DIR=/etc/ssl/certs` and `CODE_SERVER_KEY_DIR=/etc/ssl/private` on Ubuntu hosts.
+| Variable                   | Dev Value                     | Prod Value                   |
+| :------------------------- | :---------------------------- |:-----------------------------|
+| `CODE_SERVER_CONFIG_PATH`  | `./docker-volumes/config`     | `~/docker/codeserver_config` |
+| `CODE_SERVER_PASSWORD`     | `changeme`                    | -                            |
+| `CODE_SERVER_SUDO_PASSWORD`| `changeme`                    | -                            |
+| `CODE_SERVER_CERT_DIR`     | `./nginx/ssl/cert`            | `/etc/ssl/certs`             |
+| `CODE_SERVER_KEY_DIR`      | `./nginx/ssl/private`         | `/etc/ssl/private`           |
+| `CODE_SERVER_CERT_DOMAIN`  | `code-server.local`           | -                            |
+| `CODE_SERVER_CERT_DAYS`    | `365`                         | -                            |
 
 ## Deployment Commands
 
