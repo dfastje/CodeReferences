@@ -17,3 +17,4 @@
 /docker-containers/FreshRSS/.env
 /docker-containers/FreshRSS/docker-volumes/
 /docker-containers/Ollama/.env
+/docker-containers/Ollama/docker-volumes/

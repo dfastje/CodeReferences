@@ -4,16 +4,16 @@ Document setup details, environment variables, and operational tips here.
 
 ## Environment Variables
 
-| Variable                | Dev Value                     | Prod Value                     |
-| :---------------------- | :---------------------------- | :----------------------------- |
-| `OLLAMA_DATA_PATH`      | `./docker-volumes/ollama`     | `~/docker/ollama_data`         |
-| `OPENWEBUI_DATA_PATH`   | `./docker-volumes/openwebui`  | `~/docker/openwebui_data`      |
-| `OPENWEBUI_HTTPS_PORT`  | `30443`                       | -                              |
-| `OLLAMA_HTTPS_PORT`     | `11444`                       | -                              |
-| `OLLAMA_CERT_DIR`       | `./nginx/ssl/cert`            | `/etc/ssl/certs`               |
-| `OLLAMA_KEY_DIR`        | `./nginx/ssl/private`         | `/etc/ssl/private`             |
-| `OLLAMA_CERT_DOMAIN`    | `ollama.ram.dfastje.work`     | `ollama.ram.dfastje.work`      |
-| `OLLAMA_CERT_DAYS`      | `365`                         | -                              |
+| Variable                | Dev Value                    | Prod Value                    |
+| :---------------------- |:-----------------------------|:------------------------------|
+| `OLLAMA_DATA_PATH`      | `./docker-volumes/ollama`    | `~/docker/ollama_data`        |
+| `OPENWEBUI_DATA_PATH`   | `./docker-volumes/openwebui` | `~/docker/openwebui_data`     |
+| `OPENWEBUI_HTTPS_PORT`  | `30443`                      | `30443`                       |
+| `OLLAMA_HTTPS_PORT`     | `11444`                      | `11444`                       |
+| `OLLAMA_CERT_DIR`       | `./nginx/ssl/cert`           | `/etc/ssl/certs`              |
+| `OLLAMA_KEY_DIR`        | `./nginx/ssl/private`        | `/etc/ssl/private`            |
+| `OLLAMA_CERT_DOMAIN`    | `localhost`                  | `ram.dfastje.work`            |
+| `OLLAMA_CERT_DAYS`      | `365`                        | -                             |
 
 ## Deployment Commands
 
