@@ -14,3 +14,5 @@
 *.pem
 /docker-containers/Audiobookshelf/docker-volumes/
 /docker-containers/CodeServer/docker-volumes/
+/docker-containers/FreshRSS/.env
+/docker-containers/FreshRSS/docker-volumes/

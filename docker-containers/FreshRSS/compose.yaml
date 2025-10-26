@@ -1,17 +1,15 @@
-#https://hub.docker.com/r/linuxserver/freshrss
-# https://github.com/linuxserver/docker-freshrss/blob/master/Dockerfile
 services:
   freshrss:
     image: linuxserver/freshrss:latest
     container_name: freshrss
-    ports:
-      - "8021:80"
+    # ports:
+    #   - "8021:80"
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=America/New_York
     volumes:
-      - /home/ubuntuprod/Syncthing/docker/freshrss_config:/config
+      - ${FRESHRSS_CONFIG_PATH:-./docker-volumes/config}:/config
     restart: unless-stopped
   reverse-proxy:
     image: nginx:alpine
@@ -23,7 +21,8 @@ services:
       - CERT_DAYS=${FRESHRSS_CERT_DAYS:-365}
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
-      - ./nginx/certs:/etc/nginx/certs
+      - ${FRESHRSS_CERT_DIR}:/etc/nginx/certs
+      - ${FRESHRSS_KEY_DIR}:/etc/nginx/private
     ports:
       - "8020:443"
     command: >-
@@ -31,8 +30,9 @@ services:
         if ! command -v openssl >/dev/null 2>&1; then
           apk add --no-cache openssl >/dev/null 2>&1;
         fi;
-        if [ ! -f /etc/nginx/certs/freshrss.crt ] || [ ! -f /etc/nginx/certs/freshrss.key ]; then
-          openssl req -x509 -nodes -batch -days 365 -newkey rsa:2048 -keyout /etc/nginx/certs/freshrss.key -out /etc/nginx/certs/freshrss.crt -subj \"/CN=localhost\" -addext \"subjectAltName=DNS:localhost\";
+        if [ ! -f /etc/nginx/certs/dfastjework.crt ] || [ ! -f /etc/nginx/private/dfastjework.key ]; then
+          mkdir -p /etc/nginx/certs /etc/nginx/private;
+          openssl req -x509 -nodes -batch -days 365 -newkey rsa:2048 -keyout /etc/nginx/private/dfastjework.key -out /etc/nginx/certs/dfastjework.crt -subj \"/CN=localhost\" -addext \"subjectAltName=DNS:localhost\";
         fi;
         exec nginx -g 'daemon off;'"
     restart: unless-stopped
