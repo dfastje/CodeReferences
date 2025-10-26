@@ -13,3 +13,4 @@
 *.crt
 *.pem
 /docker-containers/Audiobookshelf/docker-volumes/
+/docker-containers/CodeServer/docker-volumes/
