@@ -11,6 +11,8 @@ services:
     volumes:
       - ${FRESHRSS_CONFIG_PATH:-./docker-volumes/config}:/config
     restart: unless-stopped
+    networks:
+      - freshrss_internal
   reverse-proxy:
     image: nginx:alpine
     container_name: freshrss-proxy
@@ -42,9 +44,13 @@ services:
         exec nginx -g 'daemon off;'"
     networks:
       - freshrss_macvlan
+      - freshrss_internal
     restart: unless-stopped
 
 networks:
+  freshrss_internal:
+    driver: bridge
+    name: "freshrss_internal"
   freshrss_macvlan:
     driver: macvlan
     name: "freshrss_macvlan"
