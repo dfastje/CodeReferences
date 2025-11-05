@@ -55,11 +55,6 @@ networks:
     name: "audiobookshelf_macvlan"
     driver_opts:
       parent: "${AUDIOBOOKSHELF_MACVLAN_PARENT:-enp4s0}"
-    ipam:
-      driver: default
-      config:
-        - subnet: "192.168.1.0/24"
-          gateway: "192.168.1.1"
   audiobookshelf_internal:
     driver: bridge
     name: "audiobookshelf_internal"
