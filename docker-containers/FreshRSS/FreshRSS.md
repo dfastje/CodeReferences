@@ -22,6 +22,15 @@ Use this snippet to print the interface that should populate `driver_opts.parent
 echo "$(ip route show default | awk 'NR==1 {print $5}')"
 ```
 
+## Check Container Network Details
+
+```bash
+sudo docker inspect -f '{{range $name,$net := .NetworkSettings.Networks}}{{$name}} -> MAC: {{$net.MacAddress}}{{"\n"}}{{end}}' freshrss-proxy
+```
+```bash
+sudo docker inspect -f '{{range $name,$net := .NetworkSettings.Networks}}{{$name}} -> IP: {{$net.IPAddress}}{{"\n"}}{{end}}' freshrss-proxy
+```
+
 ## Deployment Commands
 
 ```bash

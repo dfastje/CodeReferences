@@ -41,7 +41,6 @@ services:
         fi;
         exec nginx -g 'daemon off;'"
     networks:
-      - default
       - freshrss_macvlan
     restart: unless-stopped
 
