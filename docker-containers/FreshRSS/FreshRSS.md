@@ -13,7 +13,7 @@ Document setup details, environment variables, and operational tips here.
 | `FRESHRSS_CERT_DAYS`            | `365`                     | -                          |
 | `FRESHRSS_MACVLAN_PARENT`       | (run codeblock to know)   | (host dependent)           |
 | `FRESHRSS_MAC_ADDRESS`          | `26:a0:1e:ed:23:f6`       | `26:a0:1e:ed:23:f5`        |
-| `FRESHRSS_INTERNAL_MAC_ADDRESS` | `02:42:ac:11:00:02`       | -                          |
+| `FRESHRSS_INTERNAL_MAC_ADDRESS` | `02:42:ac:11:00:02`       | `02:42:ac:11:00:03`        |
 
 ## Networking Notes
 
