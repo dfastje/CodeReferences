@@ -13,9 +13,13 @@ services:
       - ${AUDIOBOOK_METADATA_PATH}:/metadata
     environment:
       - TZ=America/New_York
+    networks:
+      - audiobookshelf_internal
   reverse-proxy:
     image: nginx:alpine
     container_name: audiobookshelf-proxy
+    cap_add:
+      - NET_ADMIN
     depends_on:
       - audiobookshelf
     environment:
@@ -29,6 +33,7 @@ services:
       - "8010:443"
     command: >-
       sh -c "set -e;
+        udhcpc -i eth0 -s /usr/share/udhcpc/default.script -n -q;
         if ! command -v openssl >/dev/null 2>&1; then
           apk add --no-cache openssl >/dev/null 2>&1;
         fi;
@@ -37,4 +42,24 @@ services:
           openssl req -x509 -nodes -batch -days 365 -newkey rsa:2048 -keyout /etc/nginx/private/dfastjework.key -out /etc/nginx/certs/dfastjework.crt -subj \"/CN=localhost\" -addext \"subjectAltName=DNS:localhost\";
         fi;
         exec nginx -g 'daemon off;'"
+    networks:
+      audiobookshelf_macvlan:
+        mac_address: "${AUDIOBOOKSHELF_MAC_ADDRESS}"
+      audiobookshelf_internal:
+        mac_address: "${AUDIOBOOKSHELF_INTERNAL_MAC_ADDRESS}"
     restart: unless-stopped
+
+networks:
+  audiobookshelf_macvlan:
+    driver: macvlan
+    name: "audiobookshelf_macvlan"
+    driver_opts:
+      parent: "${AUDIOBOOKSHELF_MACVLAN_PARENT:-enp4s0}"
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.1.0/24"
+          gateway: "192.168.1.1"
+  audiobookshelf_internal:
+    driver: bridge
+    name: "audiobookshelf_internal"

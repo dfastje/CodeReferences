@@ -18,7 +18,6 @@ services:
     container_name: freshrss-proxy
     cap_add:
       - NET_ADMIN
-      - NET_RAW
     depends_on:
       - freshrss
     environment:
