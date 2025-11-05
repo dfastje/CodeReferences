@@ -48,9 +48,6 @@ services:
     restart: unless-stopped
 
 networks:
-  freshrss_internal:
-    driver: bridge
-    name: "freshrss_internal"
   freshrss_macvlan:
     driver: macvlan
     name: "freshrss_macvlan"
@@ -61,3 +58,6 @@ networks:
       config:
         - subnet: "192.168.1.0/24"
           gateway: "192.168.1.1"
+  freshrss_internal:
+    driver: bridge
+    name: "freshrss_internal"
