@@ -43,8 +43,10 @@ services:
         fi;
         exec nginx -g 'daemon off;'"
     networks:
-      - freshrss_macvlan
-      - freshrss_internal
+      freshrss_macvlan:
+        mac_address: "${FRESHRSS_MAC_ADDRESS}"
+      freshrss_internal:
+        mac_address: "${FRESHRSS_INTERNAL_MAC_ADDRESS}"
     restart: unless-stopped
 
 networks:
