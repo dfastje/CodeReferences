@@ -31,6 +31,15 @@ sudo docker inspect -f '{{range $name,$net := .NetworkSettings.Networks}}{{$name
 sudo docker inspect -f '{{range $name,$net := .NetworkSettings.Networks}}{{$name}} -> IP: {{$net.IPAddress}}{{"\n"}}{{end}}' freshrss-proxy
 ```
 
+## View Logs
+
+```bash
+sudo docker logs -f freshrss
+```
+```bash
+sudo docker logs -f freshrss-proxy
+```
+
 ## Deployment Commands
 
 ```bash
