@@ -16,7 +16,6 @@ services:
   reverse-proxy:
     image: nginx:alpine
     container_name: freshrss-proxy
-    mac_address: "${FRESHRSS_MAC_ADDRESS}"
     cap_add:
       - NET_ADMIN
       - NET_RAW
