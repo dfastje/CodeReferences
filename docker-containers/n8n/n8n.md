@@ -21,6 +21,9 @@ Document setup details, environment variables, and operational tips here.
 | `N8N_KEY_DIR`              | `./nginx/ssl/private`    | `/etc/ssl/private`         |
 | `N8N_CERT_DOMAIN`          | `n8n.ram.dfastje.work`   | -                          |
 | `N8N_CERT_DAYS`            | `365`                    | -                          |
+| `N8N_MACVLAN_PARENT`       | (run codeblock to know)  | (host dependent)           |
+| `N8N_MAC_ADDRESS`          | `26:a0:1e:ed:23:fb`      | `26:a0:1e:ed:23:fc`        |
+| `N8N_INTERNAL_MAC_ADDRESS` | `02:42:ac:11:03:02`      | `02:42:ac:11:03:03`        |
 
 ## Networking Notes
 
