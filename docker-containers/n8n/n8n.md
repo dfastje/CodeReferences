@@ -22,6 +22,26 @@ Document setup details, environment variables, and operational tips here.
 | `N8N_CERT_DOMAIN`          | `n8n.ram.dfastje.work`   | -                          |
 | `N8N_CERT_DAYS`            | `365`                    | -                          |
 
+## Networking Notes
+
+- `n8n_macvlan` gives the reverse proxy a LAN IP/MAC issued by your router.
+- `n8n_internal` keeps the proxy and app linked privately so `n8n-app` is not exposed directly.
+
+## Identify `driver_opts.parent`
+
+```bash
+echo "$(ip route show default | awk 'NR==1 {print $5}')"
+```
+
+## Check Container Network Details
+
+```bash
+sudo docker inspect -f '{{range $name,$net := .NetworkSettings.Networks}}{{$name}} -> MAC: {{$net.MacAddress}}{{"\n"}}{{end}}' n8n-proxy
+```
+```bash
+sudo docker inspect -f '{{range $name,$net := .NetworkSettings.Networks}}{{$name}} -> IP: {{$net.IPAddress}}{{"\n"}}{{end}}' n8n-proxy
+```
+
 ## Deployment Commands
 
 ```bash
