@@ -11,6 +11,7 @@ services:
       - ${OLLAMA_DATA_PATH:-./docker-volumes/ollama}:/root/.ollama
     networks:
       - shared_ai_bridge
+      - ollama_macvlan
     deploy:
       resources:
         reservations:

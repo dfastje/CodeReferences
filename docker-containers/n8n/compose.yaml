@@ -48,6 +48,7 @@ services:
       - n8n_local_files:/files
     networks:
       - shared_ai_bridge
+      - n8n_macvlan
   reverse-proxy:
     image: nginx:alpine
     container_name: n8n-proxy
