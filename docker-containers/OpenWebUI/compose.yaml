@@ -26,8 +26,8 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - ${OPENWEBUI_CERT_DIR}:/etc/nginx/certs
       - ${OPENWEBUI_KEY_DIR}:/etc/nginx/private
-    ports:
-      - "${OPENWEBUI_HTTPS_PORT:-443}:443"
+#    ports:
+#      - "${OPENWEBUI_HTTPS_PORT:-443}:443"
     command: >-
       sh -c "set -e;
         udhcpc -i eth0 -s /usr/share/udhcpc/default.script -n -q;
