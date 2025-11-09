@@ -11,7 +11,7 @@ Create and manage the shared Docker bridge network that other AI-focused stacks 
 ## Create/Refresh the Network
 
 ```bash
-docker network create \
+sudo docker network create \
   --driver bridge \
   --attachable \
   --opt com.docker.network.bridge.name="br-shared-ai" \
