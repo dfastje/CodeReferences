@@ -18,3 +18,5 @@
 /docker-containers/FreshRSS/docker-volumes/
 /docker-containers/Ollama/.env
 /docker-containers/Ollama/docker-volumes/
+/docker-containers/OpenWebUI/docker-volumes/
+/docker-containers/OpenWebUI/.env

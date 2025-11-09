@@ -5,7 +5,7 @@ This single workflow proves the Ollama container can see the GPU and that OpenWe
 | Step | Action                                                                                                 | Success Criteria |
 |------|--------------------------------------------------------------------------------------------------------|------------------|
 | 1    | In a terminal, run `sudo docker exec -it ollama watch -n 2 nvidia-smi`                                    | Watch starts streaming GPU metrics; no errors returned. |
-| 2    | In another tab, browse to https://localhost:${OPENWEBUI_HTTPS_PORT:-30443} and sign in to OpenWebUI        | UI loads and lets you select the Ollama provider. |
+| 2    | In another tab, browse to https://localhost:${OPENWEBUI_HTTPS_PORT:-30443} (from the OpenWebUI stack) and sign in | UI loads and lets you select the Ollama provider. |
 | 3    | Send the prompt `Write a buildout plan for building an org from scratch under the AWS SRA` from OpenWebUI | Response returns successfully. |
 | 4    | Observe the first terminal while the response streams                                                     | `nvidia-smi` output shows the `ollama` process with non-zero GPU utilization and memory usage. |
 
