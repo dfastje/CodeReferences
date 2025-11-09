@@ -58,7 +58,7 @@ sudo docker logs -f openwebui-proxy
 ```
 
 ```bash
-sudo docker exec -it ollama curl -k https://ollama.dfastje.com
+sudo docker exec -it ollama wget -qO- https://ollama.dfastje.com
 ```
 
 ## Documentation
