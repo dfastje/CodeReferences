@@ -24,7 +24,7 @@ Document setup details, environment variables, and operational tips here.
 - `ollama_macvlan` hands the reverse proxy a DHCP address on your LAN so you can reach the API directly.
 - `shared_ai_bridge` (created via [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) is the shared internal bridge the proxy and GPU container use for east-west traffic.
 
-> Bring up the SharedAI stack first so the `shared_ai_bridge` network exists before deploying Ollama.
+> Create the SharedAI bridge (see [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) before deploying Ollama so `shared_ai_bridge` already exists.
 
 ## Identify `driver_opts.parent`
 

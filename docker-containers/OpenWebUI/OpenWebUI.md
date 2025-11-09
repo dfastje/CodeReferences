@@ -25,7 +25,7 @@ Document setup details, environment variables, and operational tips for the stan
 - `openwebui_macvlan` gives the reverse proxy a DHCP lease on your LAN so the UI has a dedicated IP.
 - `shared_ai_bridge` (from [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) is the shared internal bridge that keeps the proxy talking to OpenWebUI without exposing the backend.
 
-> Bring up the SharedAI stack first so the `shared_ai_bridge` network exists before deploying OpenWebUI.
+> Create the SharedAI bridge (see [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) before deploying OpenWebUI so `shared_ai_bridge` already exists.
 
 ## Identify `driver_opts.parent`
 

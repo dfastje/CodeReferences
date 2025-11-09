@@ -4,16 +4,18 @@ Create and manage the shared Docker bridge network that other AI-focused stacks 
 
 ## Network Details
 
-- This compose file only declares the shared bridge; no containers run as part of this stack.
-- Docker automatically chooses the subnet for the bridge unless you create it ahead of time with `docker network create`.
-- The bridge is marked `attachable`, enabling `docker run --network shared_ai_bridge …` without compose.
+- This project defines a single shared bridge called `shared_ai_bridge`.
+- Create it once with `docker network create` (rerun only if you remove the network later).
+- The bridge is `attachable`, so `docker run --network shared_ai_bridge …` works outside compose files.
 
-## Deployment Commands
-
-Bring the stack up once to materialize the bridge (rerun only if you removed the network):
+## Create/Refresh the Network
 
 ```bash
-docker compose up --detach
+docker network create \
+  --driver bridge \
+  --attachable \
+  --opt com.docker.network.bridge.name="br-shared-ai" \
+  shared_ai_bridge
 ```
 
 ## Verification
