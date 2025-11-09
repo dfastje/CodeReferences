@@ -21,5 +21,5 @@ docker network create \
 ## Verification
 
 ```bash
-docker network inspect shared_ai_bridge
+sudo docker network inspect shared_ai_bridge
 ```
