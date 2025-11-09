@@ -19,5 +19,5 @@ docker compose up --detach
 ## Verification
 
 ```bash
-docker network inspect shared_ai_bridge
+sudo docker network inspect shared_ai_bridge
 ```
