@@ -16,7 +16,7 @@ services:
       retries: 5
       start_period: 10s
     networks:
-      - n8n_internal
+      - shared_ai_bridge
 
   n8n:
     image: n8nio/n8n:latest
@@ -47,7 +47,7 @@ services:
       - n8n_data:/home/node/.n8n
       - n8n_local_files:/files
     networks:
-      - n8n_internal
+      - shared_ai_bridge
   reverse-proxy:
     image: nginx:alpine
     container_name: n8n-proxy
@@ -79,7 +79,7 @@ services:
     networks:
       n8n_macvlan:
         mac_address: "${N8N_MAC_ADDRESS}"
-      n8n_internal:
+      shared_ai_bridge:
         mac_address: "${N8N_INTERNAL_MAC_ADDRESS}"
 
 volumes:
@@ -93,6 +93,6 @@ networks:
     name: "n8n_macvlan"
     driver_opts:
       parent: "${N8N_MACVLAN_PARENT:-enp4s0}"
-  n8n_internal:
-    driver: bridge
-    name: "n8n_internal"
+  shared_ai_bridge:
+    external: true
+    name: "shared_ai_bridge"

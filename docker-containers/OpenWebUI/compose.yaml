@@ -9,7 +9,7 @@ services:
     volumes:
       - ${OPENWEBUI_DATA_PATH:-./docker-volumes/openwebui}:/app/backend/data
     networks:
-      - openwebui_internal
+      - shared_ai_bridge
 
   reverse-proxy:
     image: nginx:alpine
@@ -43,7 +43,7 @@ services:
     networks:
       openwebui_macvlan:
         mac_address: "${OPENWEBUI_MAC_ADDRESS}"
-      openwebui_internal:
+      shared_ai_bridge:
         mac_address: "${OPENWEBUI_INTERNAL_MAC_ADDRESS}"
 
 networks:
@@ -52,6 +52,6 @@ networks:
     name: "openwebui_macvlan"
     driver_opts:
       parent: "${OPENWEBUI_MACVLAN_PARENT:-enp4s0}"
-  openwebui_internal:
-    driver: bridge
-    name: "openwebui_internal"
+  shared_ai_bridge:
+    external: true
+    name: "shared_ai_bridge"

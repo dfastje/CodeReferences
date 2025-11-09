@@ -10,7 +10,7 @@ services:
     volumes:
       - ${OLLAMA_DATA_PATH:-./docker-volumes/ollama}:/root/.ollama
     networks:
-      - ollama_internal
+      - shared_ai_bridge
     deploy:
       resources:
         reservations:
@@ -51,7 +51,7 @@ services:
     networks:
       ollama_macvlan:
         mac_address: "${OLLAMA_MAC_ADDRESS}"
-      ollama_internal:
+      shared_ai_bridge:
         mac_address: "${OLLAMA_INTERNAL_MAC_ADDRESS}"
 
 networks:
@@ -60,6 +60,6 @@ networks:
     name: "ollama_macvlan"
     driver_opts:
       parent: "${OLLAMA_MACVLAN_PARENT:-enp4s0}"
-  ollama_internal:
-    driver: bridge
-    name: "ollama_internal"
+  shared_ai_bridge:
+    external: true
+    name: "shared_ai_bridge"

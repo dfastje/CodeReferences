@@ -28,7 +28,9 @@ Document setup details, environment variables, and operational tips here.
 ## Networking Notes
 
 - `n8n_macvlan` gives the reverse proxy a LAN IP/MAC issued by your router.
-- `n8n_internal` keeps the proxy and app linked privately so `n8n-app` is not exposed directly.
+- `shared_ai_bridge` (from [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) carries the east-west traffic between Postgres, n8n, and the reverse proxy without exposing the services directly.
+
+> Bring up the SharedAI stack first so the `shared_ai_bridge` network exists before deploying n8n.
 
 ## Identify `driver_opts.parent`
 
