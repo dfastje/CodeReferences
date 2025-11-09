@@ -1,0 +1,7 @@
+networks:
+  sharedai_bridge:
+    driver: bridge
+    name: "shared_ai_bridge"
+    attachable: true
+    driver_opts:
+      com.docker.network.bridge.name: "br-shared-ai"
