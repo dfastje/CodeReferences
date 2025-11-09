@@ -7,7 +7,7 @@ Document setup details, environment variables, and operational tips here.
 | Variable                       | Dev Value                 | Prod Value                 |
 | :----------------------------- |:--------------------------|:---------------------------|
 | `OLLAMA_DATA_PATH`             | `./docker-volumes/ollama` | `~/docker/ollama_data`     |
-| `OLLAMA_HTTPS_PORT`            | `11444`                   | `11444`                    |
+| `OLLAMA_HTTPS_PORT`            | `443`                     | `443`                      |
 | `OLLAMA_CERT_DIR`              | `./nginx/ssl/cert`        | `/etc/ssl/certs`           |
 | `OLLAMA_KEY_DIR`               | `./nginx/ssl/private`     | `/etc/ssl/private`         |
 | `OLLAMA_CERT_DOMAIN`           | `ollama.local`            | `ollama.dfastje.work`      |
@@ -17,6 +17,7 @@ Document setup details, environment variables, and operational tips here.
 | `OLLAMA_INTERNAL_MAC_ADDRESS`  | `02:42:ac:11:04:02`       | `02:42:ac:11:04:03`        |
 
 > Looking for OpenWebUI? It now lives in `docker-containers/OpenWebUI` with its own compose stack and documentation.
+> `OLLAMA_HTTPS_PORT` controls both the host-facing TLS port and the daemon's internal `OLLAMA_HOST` binding.
 
 ## Networking Notes
 

@@ -7,7 +7,7 @@ services:
     #ports:
       #- "11434:11434"
     environment:
-      OLLAMA_HOST: "0.0.0.0:11434"
+      OLLAMA_HOST: "0.0.0.0:${OLLAMA_HTTPS_PORT:-11444}"
       NVIDIA_VISIBLE_DEVICES: "all"
       NVIDIA_DRIVER_CAPABILITIES: "compute,utility"
     volumes:
@@ -38,7 +38,7 @@ services:
       - ${OLLAMA_CERT_DIR}:/etc/nginx/certs
       - ${OLLAMA_KEY_DIR}:/etc/nginx/private
     ports:
-      - "${OLLAMA_HTTPS_PORT:-11444}:444"
+      - "${OLLAMA_HTTPS_PORT:-443}:443"
     command: >-
       sh -c "set -e;
         udhcpc -i eth0 -s /usr/share/udhcpc/default.script -n -q;
