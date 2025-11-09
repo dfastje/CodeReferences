@@ -21,7 +21,7 @@ Document setup details, environment variables, and operational tips here.
 
 ## Networking Notes
 
-- `ollama_macvlan` connects both the daemon and proxy to the LAN; the proxy holds the static MAC so you can reserve DHCP leases.
+- `ollama_macvlan` connects only the reverse proxy to the LAN; it holds the static MAC so you can reserve DHCP leases.
 - `shared_ai_bridge` (created via [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) is the shared internal bridge the stack uses for east-west traffic; the proxy keeps a static MAC there as well.
 
 > Create the SharedAI bridge (see [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) before deploying Ollama so `shared_ai_bridge` already exists.

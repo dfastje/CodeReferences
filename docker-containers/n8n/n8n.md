@@ -27,7 +27,7 @@ Document setup details, environment variables, and operational tips here.
 
 ## Networking Notes
 
-- `n8n_macvlan` keeps static MACs on the app and proxy so you can reserve DHCP leases.
+- `n8n_macvlan` keeps a static MAC on the reverse proxy so you can reserve DHCP leases; the app and Postgres stay on the internal bridge only.
 - `shared_ai_bridge` (from [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) carries the east-west traffic between Postgres, n8n, and the reverse proxy without exposing the services directly; the proxy also keeps a static MAC here.
 
 > Create the SharedAI bridge (see [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) before deploying n8n so `shared_ai_bridge` already exists.

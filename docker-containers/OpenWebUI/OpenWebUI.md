@@ -22,7 +22,7 @@ Document setup details, environment variables, and operational tips for the stan
 
 ## Networking Notes
 
-- `openwebui_macvlan` connects both UI and proxy containers to the LAN; the proxy holds the static MAC so you can reserve DHCP leases.
+- `openwebui_macvlan` connects only the reverse proxy to the LAN; it holds the static MAC so you can reserve DHCP leases.
 - `shared_ai_bridge` (from [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) is the shared internal bridge that keeps the proxy talking to OpenWebUI without exposing the backend; the proxy also retains a static MAC here.
 
 > Create the SharedAI bridge (see [`docker-containers/SharedAI`](../SharedAI/SharedAI.md)) before deploying OpenWebUI so `shared_ai_bridge` already exists.

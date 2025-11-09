@@ -10,7 +10,6 @@ services:
       - ${OPENWEBUI_DATA_PATH:-./docker-volumes/openwebui}:/app/backend/data
     networks:
       - shared_ai_bridge
-      - openwebui_macvlan
 
   reverse-proxy:
     image: nginx:alpine
