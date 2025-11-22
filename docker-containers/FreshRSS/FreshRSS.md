@@ -9,7 +9,7 @@ Document setup details, environment variables, and operational tips here.
 | `FRESHRSS_CONFIG_PATH`          | `./docker-volumes/config` | `~/docker/freshrss_config` |
 | `FRESHRSS_CERT_DIR`             | `./nginx/ssl/cert`        | `/etc/ssl/certs`           |
 | `FRESHRSS_KEY_DIR`              | `./nginx/ssl/private`     | `/etc/ssl/private`         |
-| `FRESHRSS_CERT_DOMAIN`          | `freshrss.local`          | -                          |
+| `FRESHRSS_CERT_DOMAIN`          | `freshrss.local`          | freshrss.dfastje.work      |
 | `FRESHRSS_CERT_DAYS`            | `365`                     | -                          |
 | `FRESHRSS_MACVLAN_PARENT`       | (run codeblock to know)   | (host dependent)           |
 | `FRESHRSS_MAC_ADDRESS`          | `26:a0:1e:ed:23:f6`       | `26:a0:1e:ed:23:f5`        |
