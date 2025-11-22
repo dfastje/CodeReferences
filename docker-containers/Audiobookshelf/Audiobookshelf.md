@@ -6,7 +6,7 @@ Document setup details, environment variables, and operational tips here.
 
 | Variable                             | Dev Value                     | Prod Value                         |
 |:-------------------------------------|:------------------------------|:-----------------------------------|
-| `AUDIOBOOK_PATH`                     | `./docker-volumes/audiobooks` | `~/docker/audiobookshelf_media`    |
+| `AUDIOBOOK_PATH`                     | `./docker-volumes/audiobooks` | `/mnt/media/audiobooks`            |
 | `AUDIOBOOK_CONFIG_PATH`              | `./docker-volumes/config`     | `~/docker/audiobookshelf_config`   |
 | `AUDIOBOOK_METADATA_PATH`            | `./docker-volumes/metadata`   | `~/docker/audiobookshelf_metadata` |
 | `AUDIOBOOKSHELF_CERT_DIR`            | `./nginx/ssl/cert`            | `/etc/ssl/certs`                   |

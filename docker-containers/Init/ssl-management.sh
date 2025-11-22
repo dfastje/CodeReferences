@@ -6,14 +6,14 @@ set -e
 # Note: No auto-detection. Set SRC_DIR in the script before running,
 # or pass SOURCE_DIR as the first argument.
 
-SRC_DIR="/path/to/dfastje.work-ssl-bundle"
+SRC_DIR="/home/ramwithabow/Downloads/dfastje.work-ssl-bundle"
 CERT_SRC="$SRC_DIR/domain.cert.pem"
 KEY_SRC="$SRC_DIR/private.key.pem"
 
 CERT_DST="/etc/ssl/certs/dfastjework.crt"
-KEY_DST="/etc/ssl/certs/private/dfastjework.key"
+KEY_DST="/etc/ssl/private/dfastjework.key"
 
-mkdir -p /etc/ssl/certs /etc/ssl/certs/private
+mkdir -p /etc/ssl/certs /etc/ssl/private/
 cp "$CERT_SRC" "$CERT_DST"
 cp "$KEY_SRC" "$KEY_DST"
 chown root:root "$CERT_DST" "$KEY_DST"
