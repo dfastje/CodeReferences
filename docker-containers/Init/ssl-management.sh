@@ -3,9 +3,10 @@ set -e
 
 # Simple script: copy and rename SSL files to system locations.
 # Usage: ./ssl-management.sh [SOURCE_DIR]
-# Default SOURCE_DIR: "$HOME/Downloads/dfastje.work-ssl-bundle"
+# Note: No auto-detection. Set SRC_DIR in the script before running,
+# or pass SOURCE_DIR as the first argument.
 
-SRC_DIR=${1:-"$HOME/Downloads/dfastje.work-ssl-bundle"}
+SRC_DIR="/path/to/dfastje.work-ssl-bundle"
 CERT_SRC="$SRC_DIR/domain.cert.pem"
 KEY_SRC="$SRC_DIR/private.key.pem"
 
