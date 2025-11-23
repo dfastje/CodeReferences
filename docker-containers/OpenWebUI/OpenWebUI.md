@@ -49,6 +49,10 @@ sudo docker compose pull && \
 sudo docker compose up -d
 ```
 
+```bash
+sudo docker network disconnect -f openwebui_macvlan openwebui-proxy
+```
+
 ## Debug Commands
 
 ```bash
