@@ -1,5 +1,9 @@
 #Not working, but close enough for now
 
+#-----------------------------------------------------------------------
+#Expectations
+# - Plex Media Server is installed and provides the plex user.
+
 #SMB setup
 NAS_IP="NAS_IP_OF_CORRECT_NETWORK"
 NAS_DIR="media"
@@ -43,11 +47,22 @@ if grep -q "your_smb_password" ${CREDS_FILE}; then
   exit 1
 fi
 #-----------------------------------------------------------------------
+#Shared group for SMB mounts
+SHARED_GROUP="sharedmedia"
+
+sudo groupadd -f "${SHARED_GROUP}"
+
+SHARED_GID=$(getent group "${SHARED_GROUP}" | cut -d: -f3)
+#-----------------------------------------------------------------------
+#Add plex user to shared group
+sudo usermod -a -G "${SHARED_GROUP}" plex
+
+#-----------------------------------------------------------------------
 #Edit /etc/fstab for mounting
 if grep -q " ${MNT_DIR} " /etc/fstab; then
   echo "Mount point already exists in /etc/fstab."
 else
-  echo "//${NAS_IP}/${NAS_DIR}   ${MNT_DIR}   cifs   credentials=/etc/smb-credentials,iocharset=utf8,uid=1000,gid=1000,file_mode=0770,dir_mode=0770,nofail  0  0" > ~/temp.txt
+  echo "//${NAS_IP}/${NAS_DIR}   ${MNT_DIR}   cifs   credentials=/etc/smb-credentials,iocharset=utf8,uid=1000,gid=${SHARED_GID},file_mode=0770,dir_mode=0770,nofail  0  0" > ~/temp.txt
   sudo su
   cat ~/temp.txt >> /etc/fstab
 fi
