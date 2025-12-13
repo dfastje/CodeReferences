@@ -14,6 +14,8 @@ services:
   reverse-proxy:
     image: nginx:alpine
     container_name: nextcloud-proxy
+    cap_add:
+      - NET_ADMIN
     depends_on:
       - nextcloud-aio-mastercontainer
     environment:
@@ -27,6 +29,7 @@ services:
       - "8443:443"
     command: >-
       sh -c "set -e;
+        udhcpc -i eth0 -s /usr/share/udhcpc/default.script -n -q;
         if ! command -v openssl >/dev/null 2>&1; then
           apk add --no-cache openssl >/dev/null 2>&1;
         fi;
@@ -36,10 +39,18 @@ services:
         fi;
         exec nginx -g 'daemon off;'"
     networks:
-      - nextcloud_internal
+      nextcloud_macvlan:
+        mac_address: "${NEXTCLOUD_MAC_ADDRESS:-26:a0:1e:ed:24:01}"
+      nextcloud_internal:
+        mac_address: "${NEXTCLOUD_INTERNAL_MAC_ADDRESS:-02:42:ac:11:06:02}"
     restart: unless-stopped
 
 networks:
+  nextcloud_macvlan:
+    driver: macvlan
+    name: "nextcloud_macvlan"
+    driver_opts:
+      parent: "${NEXTCLOUD_MACVLAN_PARENT:-enp4s0}"
   nextcloud_internal:
     driver: bridge
     name: "nextcloud_internal"
