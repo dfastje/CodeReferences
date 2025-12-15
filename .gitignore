@@ -21,3 +21,4 @@
 /docker-containers/OpenWebUI/docker-volumes/
 /docker-containers/OpenWebUI/.env
 /docker-containers/Nextcloud/.env
+/docker-containers/Nextcloud/docker-volumes/
