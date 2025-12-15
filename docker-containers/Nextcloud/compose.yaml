@@ -1,0 +1,122 @@
+services:
+  db:
+    image: mariadb:10.11
+    container_name: nextcloud-db
+    restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    environment:
+      MYSQL_ROOT_PASSWORD: "${NEXTCLOUD_DB_ROOT_PASSWORD:-changeme-root}"
+      MYSQL_DATABASE: "${NEXTCLOUD_DB_NAME:-nextcloud}"
+      MYSQL_USER: "${NEXTCLOUD_DB_USER:-nextcloud}"
+      MYSQL_PASSWORD: "${NEXTCLOUD_DB_PASSWORD:-changeme}"
+      TZ: "${NEXTCLOUD_TZ:-UTC}"
+    volumes:
+      - ${NEXTCLOUD_DB_DATA_PATH:-./docker-volumes/db}:/var/lib/mysql
+    networks:
+      - shared_ai_bridge
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h 127.0.0.1 -u root -p\"${NEXTCLOUD_DB_ROOT_PASSWORD:-changeme-root}\" --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  redis:
+    image: redis:7-alpine
+    container_name: nextcloud-redis
+    restart: unless-stopped
+    command: redis-server --save 60 1 --loglevel warning
+    volumes:
+      - ${NEXTCLOUD_REDIS_DATA_PATH:-./docker-volumes/redis}:/data
+    networks:
+      - shared_ai_bridge
+
+  nextcloud:
+    image: nextcloud:apache
+    container_name: nextcloud
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      MYSQL_HOST: db
+      MYSQL_DATABASE: "${NEXTCLOUD_DB_NAME:-nextcloud}"
+      MYSQL_USER: "${NEXTCLOUD_DB_USER:-nextcloud}"
+      MYSQL_PASSWORD: "${NEXTCLOUD_DB_PASSWORD:-changeme}"
+      REDIS_HOST: redis
+
+      NEXTCLOUD_ADMIN_USER: "${NEXTCLOUD_ADMIN_USER:-admin}"
+      NEXTCLOUD_ADMIN_PASSWORD: "${NEXTCLOUD_ADMIN_PASSWORD:-changeme}"
+      NEXTCLOUD_TRUSTED_DOMAINS: "${NEXTCLOUD_TRUSTED_DOMAINS:-nextcloud.local localhost}"
+
+      # Behind reverse proxy:
+      OVERWRITEPROTOCOL: "${NEXTCLOUD_OVERWRITEPROTOCOL:-https}"
+      TRUSTED_PROXIES: "${NEXTCLOUD_TRUSTED_PROXIES:-}"
+
+      # Optional tuning
+      PHP_MEMORY_LIMIT: "${NEXTCLOUD_PHP_MEMORY_LIMIT:-512M}"
+      PHP_UPLOAD_LIMIT: "${NEXTCLOUD_PHP_UPLOAD_LIMIT:-16G}"
+      TZ: "${NEXTCLOUD_TZ:-UTC}"
+    volumes:
+      - ${NEXTCLOUD_DATA_PATH:-./docker-volumes/nextcloud}:/var/www/html
+    networks:
+      - shared_ai_bridge
+
+  cron:
+    image: nextcloud:apache
+    container_name: nextcloud-cron
+    restart: unless-stopped
+    entrypoint: /cron.sh
+    depends_on:
+      - nextcloud
+    volumes:
+      - ${NEXTCLOUD_DATA_PATH:-./docker-volumes/nextcloud}:/var/www/html
+    networks:
+      - shared_ai_bridge
+
+  reverse-proxy:
+    image: nginx:alpine
+    container_name: nextcloud-proxy
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    depends_on:
+      - nextcloud
+    environment:
+      - CERT_DOMAIN=${NEXTCLOUD_CERT_DOMAIN:-nextcloud.local}
+      - CERT_DAYS=${NEXTCLOUD_CERT_DAYS:-365}
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ${NEXTCLOUD_CERT_DIR}:/etc/nginx/certs
+      - ${NEXTCLOUD_KEY_DIR}:/etc/nginx/private
+    #    ports:
+    #      - "${NEXTCLOUD_HTTPS_PORT:-443}:443"
+    command: >-
+      sh -c "set -e;
+        udhcpc -i eth0 -s /usr/share/udhcpc/default.script -n -q;
+        if ! command -v openssl >/dev/null 2>&1; then
+          apk add --no-cache openssl >/dev/null 2>&1;
+        fi;
+        if [ ! -f /etc/nginx/certs/dfastjework.crt ] || [ ! -f /etc/nginx/private/dfastjework.key ]; then
+          mkdir -p /etc/nginx/certs /etc/nginx/private;
+          openssl req -x509 -nodes -batch -days ${NEXTCLOUD_CERT_DAYS:-365} -newkey rsa:2048 -keyout /etc/nginx/private/dfastjework.key -out /etc/nginx/certs/dfastjework.crt -subj \"/CN=${NEXTCLOUD_CERT_DOMAIN:-nextcloud.local}\" -addext \"subjectAltName=DNS:${NEXTCLOUD_CERT_DOMAIN:-nextcloud.local},DNS:localhost\";
+        fi;
+        exec nginx -g 'daemon off;'"
+    restart: unless-stopped
+    networks:
+      nextcloud_macvlan:
+        mac_address: "${NEXTCLOUD_MAC_ADDRESS}"
+      shared_ai_bridge:
+        mac_address: "${NEXTCLOUD_INTERNAL_MAC_ADDRESS}"
+
+networks:
+  nextcloud_macvlan:
+    driver: macvlan
+    name: "nextcloud_macvlan"
+    driver_opts:
+      parent: "${NEXTCLOUD_MACVLAN_PARENT:-enp4s0}"
+  shared_ai_bridge:
+    external: true
+    name: "shared_ai_bridge"
