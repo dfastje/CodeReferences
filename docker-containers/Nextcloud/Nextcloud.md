@@ -24,7 +24,7 @@ Document setup details, environment variables, and operational tips for the Next
 | `NEXTCLOUD_HTTPS_PORT`           | `443`                             | `443`                      |
 | `NEXTCLOUD_CERT_DIR`             | `./nginx/ssl/cert`                | `/etc/ssl/certs`           |
 | `NEXTCLOUD_KEY_DIR`              | `./nginx/ssl/private`             | `/etc/ssl/private`         |
-| `NEXTCLOUD_CERT_DOMAIN`          | `nextcloud.local`                 | `nextcloud.example.com`    |
+| `NEXTCLOUD_CERT_DOMAIN`          | `nextcloud.local`                 | `nextcloud.dfastje.work`   |
 | `NEXTCLOUD_CERT_DAYS`            | `365`                             | -                          |
 | `NEXTCLOUD_MACVLAN_PARENT`       | (run codeblock to know)           | (host dependent)           |
 | `NEXTCLOUD_MAC_ADDRESS`          | `26:a0:1e:ed:24:01`               | `26:a0:1e:ed:24:02`        |
